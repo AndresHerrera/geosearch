@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Leaflet.GeoSearch / Esri Provider</title>
+
+			<link rel="stylesheet" href="lib/leaflet/leaflet.css" />
+	<script src="lib/leaflet/leaflet.js"></script>
+	
+	<script src="lib/leaflet-geosearch/js/l.control.geosearch.js"></script>
+	<script src="lib/leaflet-geosearch/js/l.geosearch.provider.esri.js"></script>
+	<link rel="stylesheet" href="lib/leaflet-geosearch/css/l.geosearch.css" />
+	
+	
+	<link rel="stylesheet" href="lib/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.min.css" />
+	<script src="lib/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.min.js"></script>
+	
+	
+	
+	<script src="lib/jquery/jquery-3.4.1.js"></script>
+	</head>
+<body>
+	<div id="map" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+
+	<script type="text/javascript">
+
+		var osmTileUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		var basemap = new L.TileLayer(osmTileUrl, {maxZoom: 18});
+
+		var map = new L.Map('map', {
+			layers: [basemap],
+			center: new L.LatLng(3.42335,-76.52086), zoom: 12
+		});
+
+        new L.Control.GeoSearch({
+            provider: new L.GeoSearch.Provider.Esri()
+        }).addTo(map);
+
+	</script>
+</body>
+</html>
